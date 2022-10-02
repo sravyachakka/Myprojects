@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script type="text/javascript"> -->
+        <!-- // var a=10;
+        // var b=2;
+        // var c=a/b;
+        // console.log(c); 
+        // var name="MS";
+        // var last_name="DHONI";
+        // console.log(name+last_name);
+        // console.log(a+b);
+        // console.log(a-b);
+        // console.log(a*b);
+        // console.log(a/b);
+        // console.log(a%b);
+        // console.log(++b);
+        // console.log(--b);
+        // function pi(){
+        //     return 3.14;   //function declaration
+        // }
+        // function area_of_circle(radius){
+        //     area=pi()*radius*radius;   //function call
+        //     return area;
+        // }
+        // alert(area_of_circle(5));
+    </script> -->
+</head>
+<body>
+  
+    <p id="output">Default Text</p>
+    <input id="city">
+    <button onclick="show_temp()">Submit</button>
+    <script type="text/javascript">
+        function show_temp(){
+            document.getElementById("output").style.color="red";
+            document.getElementById("output").style.fontsize="20px";
+            city=document.getElementById("city").value;
+            httpRequest=new XMLHttpRequest();
+            url="https://api.weatherbit.io/v2.0/current?city="+city+"&key=ca67607f6f2d4cd89efd05b65c68f821";
+            httpRequest.open("GET",url);
+            httpRequest.send();
+            httpRequest.onreadystatechange=function(){
+                if(this.readyState==4 && this.status==200){
+                    user_data=JSON.parse(this.responseText);
+                    document.getElementById("output").innerHTML=user_data.data[0].temp;
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>
